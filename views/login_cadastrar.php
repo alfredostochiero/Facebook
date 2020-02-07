@@ -26,14 +26,17 @@
 		</nav>	
 		<div class="container">
 			<h1>Cadastrar</h1>
+			<?php if(!empty($erro)): ?>
+			<div class="alert alert-danger"> <?php echo $erro; ?> </div>
+			<?php endif; ?>	
 
 			<form method="POST">
 				<div class="form-group">
-					<label  for ="email">Nome: </label>
+					<label  for ="nome">Nome: </label>
 					<input  type ="text" class="form-control" name="nome" id="nome" />
 				</div>
 				<div class="form-group">
-					<label  for ="email">E-mnail</label>
+					<label  for ="email">E-mail</label>
 					<input  type ="email" class="form-control" name="email" id="email" />
 				</div>	
 				<div class="form-group">
@@ -42,8 +45,8 @@
 				</div>
 				<div class="radio">
 					<strong>Sexo: </strong><br/>
-					<label><input  type ="radio" name="sexo" value="0" checked="checked" /> Masculino  </label><br/>
-					<label><input  type ="radio" name="sexo" value="1"  /> Feminino </label>
+					<label><input  type ="radio" name="sexo" value="1" checked="checked" /> Masculino  </label><br/>
+					<label><input  type ="radio" name="sexo" value="0"  /> Feminino </label>
 				</div>
 				<button type="submit" class="btn btn-success">Cadastrar</button>
 			</form>

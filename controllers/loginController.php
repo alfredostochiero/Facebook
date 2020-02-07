@@ -17,7 +17,7 @@ class loginController extends controller {
 
       if(isset($_POST['email'])   && !empty($_POST['email'])){
         $email = addslashes($_POST['email']);
-        $senha = addslashes($_POST['senha']);
+        $senha = md5( ($_POST['senha']));
 
         $u = new Usuarios();
         $dados['erro'] = $u->logar($email, $senha);
@@ -29,7 +29,24 @@ class loginController extends controller {
     public function cadastrar() {
     	$dados = array();
 
-    	$this->loadView('login_cadastrar',$dados);
+      if(isset($_POST['email'])   && !empty($_POST['email'])){
+        $nome = addslashes($_POST['nome']);
+        $email = addslashes($_POST['email']);
+        $senha = addslashes($_POST['senha']);
+        $sexo = addslashes($_POST['sexo']);
+
+        $u = new Usuarios();
+        $dados['erro'] = $u->cadastrar($email, $nome, $sexo, $senha);
+
+
+    	
     }
+    $this->loadView('login_cadastrar',$dados);
+  }
+
+  public function sair() {
+    unset($_SESSION['lgsocial']);
+    header("Location:".BASE_URL);
+  }
 
 }

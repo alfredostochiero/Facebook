@@ -33,7 +33,7 @@
 
 			<form method="POST">
 				<div class="form-group">
-					<label  for ="email">E-mnail</label>
+					<label  for ="email">E-mail</label>
 					<input  type ="email" class="form-control" name="email" id="email" />
 				</div>	
 				<div class="form-group">
