@@ -15,7 +15,10 @@ class homeController extends controller {
    		$u = new Usuarios();
    		$dados['usuario_nome'] = $u->getNome($_SESSION['lgsocial']);
 
-        $this->loadTemplate('home', $dados);
+      $sugestoes = 3; // quantidade que será mostrada na sugestões de amigos
+      $dados['sugestoes'] = $u->getSugestoes($sugestoes); 
+
+      $this->loadTemplate('home', $dados);
     }
 
 }

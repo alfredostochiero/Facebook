@@ -7,7 +7,7 @@
 				</div>
 				<div class="form-group">
 					<label for ="bio">Bio :</label>
-					<textarea name="bio" id="bio" class="form-control" placeholder="<?php echo $info['bio']; ?>"></textarea>
+					<textarea name="bio" id="bio" class="form-control" rows="4" placeholder="<?php echo $info['bio']; ?>"></textarea>
 				</div>
 				<div class="form-group">
 					<label  for ="senha">Senha</label>
