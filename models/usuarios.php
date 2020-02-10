@@ -108,6 +108,8 @@ class Usuarios extends model {
 		return $array;
 	}
 
+	
+
 }
 
 ?>

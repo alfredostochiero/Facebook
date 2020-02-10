@@ -44,5 +44,6 @@
 	
 	<script src="<?php echo BASE_URL;?>assets/js/jquery-3.4.1.min.js" type="text/javascript"></script>	
 	<script src="<?php echo BASE_URL;?>assets/js/bootstrap.js" type="text/javascript"></script>
+	<script src="<?php echo BASE_URL;?>assets/js/script.js" type="text/javascript"></script>
 	</body>
 </html>
