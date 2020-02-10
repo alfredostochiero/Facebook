@@ -9,8 +9,11 @@ class homeController extends controller {
 
 	public function index() {
         
-        $dados = array();
-   
+        $dados = array(
+        	'usuario_nome' => ''
+        );
+   		$u = new Usuarios();
+   		$dados['usuario_nome'] = $u->getNome($_SESSION['lgsocial']);
 
         $this->loadTemplate('home', $dados);
     }

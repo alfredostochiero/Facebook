@@ -47,6 +47,49 @@ class Usuarios extends model {
 		}
 
 	}
+
+	public function getNome($id){
+		$sql = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");
+		$sql->bindValue(':id',$id);
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			$sql = $sql->fetch();
+			return $sql['nome'];
+		} else {
+			return false;
+		}
+	}
+
+	public function getDados($id) {
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM usuarios WHERE id = :id");
+		$sql->bindValue(':id',$id);
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+			$array = $sql->fetch();
+
+		}
+
+		return $array;
+	}
+
+	public function updatePerfil($array = array()) {
+
+		if(count($array)>0) {
+			$sql = "UPDATE usuarios SET ";
+			$campos = array();
+			foreach($array as $campo => $valor){
+				$campos[] = $campo." = '".$valor."'";
+			}
+			$sql .= implode(', ',$campos);
+			$sql .= "WHERE id = '".($_SESSION['lgsocial'])."'";
+
+			$this->db->query($sql);
+		}
+	}
 }
 
 ?>
