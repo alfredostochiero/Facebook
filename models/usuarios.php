@@ -94,10 +94,19 @@ class Usuarios extends model {
 	public function getSugestoes($limit = 5){
 		$array = array();
 		$meuid = $_SESSION['lgsocial'];
+
+		$r = new Relacionamentos();
+		$ids = $r->getIdsFriends($meuid);
+
+		if(count($ids)==0){   // Caso não tiver nenhum amigo, irá excluir somente o id do usuário logado
+			$ids[] = $meuid;
+		}
+
+
 		$sql = "SELECT usuarios.id, usuarios.nome FROM usuarios 
-		    	WHERE usuarios.id != '$meuid' 
-				ORDER BY RAND() LIMIT $limit
-		";
+		    	WHERE usuarios.id != '$meuid' AND
+		    	usuarios.id NOT IN (".implode(',', $ids).") 
+				ORDER BY RAND() LIMIT $limit ";
 
 		$sql = $this->db->query($sql);
 

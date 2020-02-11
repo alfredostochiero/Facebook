@@ -44,6 +44,23 @@ class Relacionamentos extends model {
 		return $sql['c'];
 		
 	}
+
+	public function getIdsFriends($id){
+
+		$array = array();
+
+		$sql = " SELECT * FROM relacionamentos WHERE (usuario_de = '$id' OR usuario_para = '$id') AND status ='1' ";
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0) {
+			foreach ($sql->fetchAll() as $ritem) {
+				$array[] = $ritem['usuario_de'];
+				$array[] = $ritem['usuario_para'];
+			}
+		}
+		return $array;
+		
+	}
 }
 
 
