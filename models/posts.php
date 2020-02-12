@@ -90,4 +90,22 @@ class Posts extends model {
 		$this->db->query($sql);
 	}
 
+	// Eu criei a função getComentarios para teste//
+
+	public function getComentarios($id_post){
+		$array = array();
+
+		$sql = "SELECT *, (select usuarios.nome from usuarios where id_usuario = usuarios.id ) as nome 
+		FROM posts_comentarios WHERE id_post = '$id_post'";
+
+		$sql = $this->db->query($sql);
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+
+	}
+
 }

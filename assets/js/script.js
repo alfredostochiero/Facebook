@@ -56,7 +56,7 @@ function curtir(obj){
 
 function displayComentario(obj){
 
-	$(obj).closest('.postitem_botoes').find('.postitem_comentario').show();
+	$(obj).closest('.postitem_botoes').find('.postitem_comentario').toggle();
 }
 
 function comentar(obj){
@@ -69,7 +69,7 @@ function comentar(obj){
 		data:{id:id, txt:txt}
 	});
 
-	$(obj).closest('.postitem_botoes').find('.postitem_comentario').hide(); 
+	$(obj).closest('.postitem_botoes').find('.postitem_comentario').toggle(); 
 
 
 }
