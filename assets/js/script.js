@@ -52,6 +52,20 @@ function curtir(obj){
 		url:'ajax/curtir',
 		data:{id:id}
 	});
-	
+}
 
+function displayComentario(obj){
+
+	$(obj).closest('.postitem_botoes').find('.postitem_comentario').show();
+}
+
+function comentar(obj){
+	var id = $(obj).attr('data-id');
+	var txt = $(obj).closest('.postitem_comentario').find('.postitem_txt').val();
+
+	$.ajax({
+		type:'POST',
+		url:'ajax/comentar',
+		data:{id:id, txt:txt}
+	});
 }

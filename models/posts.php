@@ -85,4 +85,9 @@ class Posts extends model {
 		$this->db->query($sql);
 	}
 
+	public function addComentario($id, $id_usuario, $txt){
+		$sql = "INSERT INTO posts_comentarios (id_post, id_usuario, data_criacao,texto) VALUES ('$id','$id_usuario',NOW(),'$txt')";
+		$this->db->query($sql);
+	}
+
 }
