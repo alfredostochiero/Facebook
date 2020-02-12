@@ -9,7 +9,7 @@
 		<strong>Post de :</strong> <?php echo $nome; ?>
 	</div>
 	<div class="postitem_botoes">
-		<button class="btn btn-primary">Curtir</button>
+		<button class="btn btn-primary" onclick="curtir(this)" data-id="<?php echo $id; ?>" data-likes="<?php echo $likes ?>" data-liked="<?php echo $liked ?>">(<?php echo $likes ?>) <?php echo ($liked =='0')?'Curtir':'Descurtir'; ?></button>
 		<button class="btn btn-light">Comentar</button>
 
 	</div>	
