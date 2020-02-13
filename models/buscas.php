@@ -16,6 +16,23 @@
   		return $array;
   	}
 
+  	public function procurarGrupo ($q){
+  		$array = array();
+  		$q = addslashes($q);
+
+  		$sql = "SELECT * FROM grupos WHERE titulo LIKE '%$q%'";
+  		
+  		$sql = $this->db->query($sql);
+
+  		if($sql->rowCount()>0){
+  			$array = $sql->fetchAll();
+  		}
+
+  		return $array;
+  	}
+
+
+
   
   }
 

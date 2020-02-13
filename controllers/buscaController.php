@@ -16,6 +16,7 @@ class buscaController extends controller {
    	  $dados['usuario_nome'] = $u->getNome($_SESSION['lgsocial']);
 
    	  $dados['resultado'] = $b->procurar($_GET['q']);
+        $dados['resultadoGrupo'] = $b->procurarGrupo($_GET['q']);
 
    	  $this->loadTemplate('busca', $dados);
    	}
