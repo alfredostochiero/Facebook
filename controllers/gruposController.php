@@ -10,7 +10,6 @@ class gruposController extends controller {
 	public function abrir($id_grupo){
 	  $u = new Usuarios();
       $g = new Grupos();
-
       $p = new Posts();
 
 

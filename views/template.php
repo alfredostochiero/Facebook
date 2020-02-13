@@ -9,10 +9,19 @@
 		<nav class="navbar navbar-dark bg-dark navbar-expand-md">
 			<div class="container">
 				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav ml-auto">
+					<ul class="nav navbar-nav navbar-left">
 						<li class="nav-item active">
 							<a class="nav-link" href="<?php echo BASE_URL;?>" > Rede Social </a>
 						</li>
+						<li>
+							<form method="GET" action="<?php echo BASE_URL;?>busca" class="form-inline  navabar-input-group">
+								<div class="form-group">
+									<input type="text" name="q" class="form-control" placeholder="Buscar..."/ >
+								</div>
+								<button type="submit" class="btn btn-default" id="btnBuscar">Buscar</button>	
+
+							</form>	
+						</li>	
 					</ul>	
 					<ul class="nav navbar-nav ml-auto">
 						<li class="nav-item dropdown">
