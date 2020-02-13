@@ -3,7 +3,7 @@
 
 <?php if($is_membro): ?>
 
-<<<<<<< HEAD
+
 <div class="post_area">
 	<form method="POST" enctype="multipart/form-data">
 		<h4>O que você está pensando?</h4>
@@ -23,9 +23,7 @@
 			
 	
 </div>	
-=======
-Bem vindo ao Grupo !
->>>>>>> 60fb408fd5fe489dac60dea447c448ad0acc7420
+
 
 <?php else: ?>
 

@@ -37,7 +37,6 @@ class Posts extends model {
 	public function getFeed($id_grupo='0') {
 
 		$array = array();
-		$array['comentario'] = '';
 
 		$r = new Relacionamentos();
 		$ids = $r->getIdsFriends($_SESSION['lgsocial']);
