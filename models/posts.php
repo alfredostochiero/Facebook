@@ -1,7 +1,7 @@
 <?php
 class Posts extends model {
 
-	public function addPost($msg,$foto){
+	public function addPost($msg,$foto,$id_grupo ='0'){
 
 		$usuario = $_SESSION['lgsocial'];
 		$tipo = 'texto';
@@ -27,13 +27,14 @@ class Posts extends model {
 		}
 
 		
-		$sql = "INSERT INTO posts (id_usuario, data_criacao,tipo,texto,url,id_grupo) VALUES ('$usuario',NOW(),'$tipo','$msg','$url','0')";
+		$sql = "INSERT INTO posts (id_usuario, data_criacao,tipo,texto,url,id_grupo) 
+		VALUES ('$usuario',NOW(),'$tipo','$msg','$url','$id_grupo')";
 
 		$this->db->query($sql);
 
 	}
 
-	public function getFeed() {
+	public function getFeed($id_grupo='0') {
 
 		$array = array();
 
@@ -51,13 +52,13 @@ class Posts extends model {
 		   posts_likes.id_usuario = '".($_SESSION['lgsocial'])."') as 
 		liked 
 		FROM posts 
-		WHERE id_usuario IN (".implode(',',$ids).") 
+		WHERE id_usuario IN (".implode(',',$ids).") AND id_grupo = '$id_grupo'
 		ORDER BY data_criacao DESC";
 
 		$sql = $this->db->query($sql);
 
 		if($sql->rowCount()>0){
-			$array = $sql->fetchAll();
+			$array = $sql->fetchAll();	
 		}
 
 		return $array;

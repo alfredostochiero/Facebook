@@ -16,5 +16,6 @@
 			<input type="text" class="postitem_txt form-control"/><br/>
 			<button class="btn btn-info" data-id="<?php echo $id; ?>" onclick="comentar(this)">Enviar</button>
 		</div>	
-	</div>	
+	</div>
+
 </div>		
