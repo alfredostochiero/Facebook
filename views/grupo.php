@@ -14,6 +14,7 @@
 </div>
 <div class="feed" >
 	<?php 
+		
 		if(count($feed)>=1) {
 			foreach($feed as $postitem){
 				$this->loadView('postitem',$postitem); // para cada postagem será carregada um view 

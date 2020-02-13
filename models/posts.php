@@ -37,23 +37,43 @@ class Posts extends model {
 	public function getFeed($id_grupo='0') {
 
 		$array = array();
-
+		
 		$r = new Relacionamentos();
 		$ids = $r->getIdsFriends($_SESSION['lgsocial']);
 		$ids[] = $_SESSION['lgsocial'];
 
-		$sql = "SELECT 
-		*, 
-		(select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) as 
-		nome, 
-		(select count(*) from posts_likes where posts_likes.id_post = posts.id) as 
-		likes,
-		(select count(*) from posts_likes where posts_likes.id_post = posts.id and 
-		   posts_likes.id_usuario = '".($_SESSION['lgsocial'])."') as 
-		liked 
-		FROM posts 
-		WHERE id_usuario IN (".implode(',',$ids).") AND id_grupo = '$id_grupo'
-		ORDER BY data_criacao DESC";
+		if($id_grupo=='0'){  // se $id_grupo == '0' getFeed será para feed de usuário. Query irá retornar as querys do usuaário e amigos
+
+			$sql = "SELECT 
+			*, 
+			(select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) as 
+			nome, 
+			(select count(*) from posts_likes where posts_likes.id_post = posts.id) as 
+			likes,
+			(select count(*) from posts_likes where posts_likes.id_post = posts.id and 
+			   posts_likes.id_usuario = '".($_SESSION['lgsocial'])."') as 
+			liked 
+			FROM posts 
+			WHERE id_usuario IN (".implode(',',$ids).") AND id_grupo = '$id_grupo'
+			ORDER BY data_criacao DESC";
+
+		} else {    // se $id_grupo != '0' getFeed será para feed de um grupo. A query irá  retornar toda os post do grupo
+
+
+			$sql = "SELECT 
+			*, 
+			(select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) as 
+			nome, 
+			(select count(*) from posts_likes where posts_likes.id_post = posts.id) as 
+			likes,
+			(select count(*) from posts_likes where posts_likes.id_post = posts.id and 
+			   posts_likes.id_usuario = '".($_SESSION['lgsocial'])."') as 
+			liked 
+			FROM posts 
+			WHERE  id_grupo = '$id_grupo'
+			ORDER BY data_criacao DESC";
+
+		}
 
 		$sql = $this->db->query($sql);
 
