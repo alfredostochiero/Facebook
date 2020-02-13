@@ -36,6 +36,7 @@ class Posts extends model {
 	public function getFeed() {
 
 		$array = array();
+		$array['comentario'] = '';
 
 		$r = new Relacionamentos();
 		$ids = $r->getIdsFriends($_SESSION['lgsocial']);
@@ -57,7 +58,7 @@ class Posts extends model {
 		$sql = $this->db->query($sql);
 
 		if($sql->rowCount()>0){
-			$array = $sql->fetchAll();
+			$array = $sql->fetchAll();	
 		}
 
 		return $array;

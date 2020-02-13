@@ -16,8 +16,6 @@
 			?>
 
 		</div>	
-
-
 	</div>
 	<div class="col-sm-4">
 		<?php if(count($requisicoes)>0): ?>
@@ -47,5 +45,20 @@
 				<?php endforeach; ?>		
 			</div>
 		<?php endif; ?>	
+
+			<div class="widget">
+				<h4>Grupos </h4>
+				<form method="POST">
+					<div class="input-group">
+						<input type="text" class="form-control" name="grupo" placeholder="Nome do grupo" />
+						<span class="input-group-btn">
+							<input type="submit" value="criar" class="btn btn-default">
+						</span>	
+					</div>	
+				</form>	
+				<?php foreach($grupos as $grupo): ?>
+				<a href="<?php echo BASE_URL; ?>grupos/abrir/<?php echo $grupo['id']; ?>"> <?php echo $grupo['titulo'];?> </a><br/>
+				<?php endforeach; ?>				
+			</div>
 	</div>
 </div>

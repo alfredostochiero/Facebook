@@ -11,6 +11,7 @@ class homeController extends controller {
       $u = new Usuarios();
       $p = new Posts();
       $r = new Relacionamentos();
+      $g = new Grupos();
         
       $dados = array(
         'usuario_nome' => ''
@@ -31,6 +32,12 @@ class homeController extends controller {
 
       }
 
+      if(isset($_POST['grupo']) && !empty($_POST['grupo'])) {
+          $grupo = addslashes($_POST['grupo']);
+          $id_grupo = $g->criar($grupo);
+          header("Location:".BASE_URL."grupos/abrir/".$id_grupo);
+      }
+
       
 
 
@@ -40,6 +47,7 @@ class homeController extends controller {
       $dados['requisicoes'] =  $r->getRequisicoes();
       $dados['totalamigos'] =  $r->getTotalAmigos($_SESSION['lgsocial']);
       $dados['feed'] = $p->getFeed();
+      $dados['grupos'] = $g->getGrupos();
 
 
 
