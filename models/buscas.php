@@ -6,6 +6,7 @@
   		$q = addslashes($q);
 
   		$sql = "SELECT * FROM usuarios WHERE nome LIKE '%$q%'";
+  		//$sql = "SELECT usuarios.nome,grupos.titulo FROM usuarios, grupos WHERE usuarios.nome LIKE '%$q%' OR grupos.titulo LIKE '%$q%' ";
   		$sql = $this->db->query($sql);
 
   		if($sql->rowCount()>0){
